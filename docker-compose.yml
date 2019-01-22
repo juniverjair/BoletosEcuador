@@ -1,0 +1,31 @@
+version: "2"
+services:
+  autenticacion:
+    build:
+      context: .
+      dockerfile: autenticacion/Dockerfile
+    restart: always
+    volumes:
+    - .:/go/src/BoletosEcuador
+    container_name: autenticacion
+    ports:
+    - 8801:8081
+  reporte:
+    build:
+      context: .
+      dockerfile: reporte/Dockerfile
+    restart: always
+    volumes:
+    - .:/go/src/BoletosEcuador
+    container_name: reporte
+    ports: []
+  ventas:
+    build:
+      context: .
+      dockerfile: ventas/Dockerfile
+    restart: always
+    volumes:
+    - .:/go/src/BoletosEcuador
+    container_name: ventas
+    ports:
+    - 8800:8081
